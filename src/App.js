@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import { Route, Switch } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Home from "./screens/Home";
+import CreateScreen from "./screens/CreateScreen";
+import UpdateScreen from "./screens/UpdateScreen";
+import UserLogin from "./screens/UserLogin";
+import UserRegister from "./screens/UserRegister";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ToastContainer />
+      <Header />
+      <Switch>
+        <Route path="/" component={Home} exact />
+        <Route path="/creator" component={CreateScreen} exact />
+        <Route path="/update/:id" component={UpdateScreen} exact />
+        <Route path="/login" component={UserLogin} exact />
+        <Route path="/register" component={UserRegister} exact />
+      </Switch>
+      <Footer />
+    </>
   );
 }
 
